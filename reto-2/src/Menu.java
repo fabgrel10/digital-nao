@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import com.github.cliftonlabs.json_simple.JsonException;
+
+import filehandler.JsonReader;
 import filehandler.JsonWriter;
 
 public class Menu {
@@ -33,7 +36,13 @@ public class Menu {
                     jsonHandler.writeFile();
                     break;
                 case 2:
-                    System.out.println("Opción 2");
+                    JsonReader reader = new JsonReader();
+                    try {
+                        reader.readJsonFile();
+                    } catch (JsonException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
                     break;
                 case 3:
                     System.out.println("Opción 3");
@@ -42,7 +51,7 @@ public class Menu {
                     System.out.println("Opción 4");
                     break;
                 case 5:
-                    System.out.println("Opción 5");
+                    System.out.println("Hasta luego!");
                     flag = false;
                     break;
                 default:
