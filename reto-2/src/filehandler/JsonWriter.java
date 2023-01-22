@@ -121,10 +121,10 @@ public class JsonWriter {
 
     public void writeFile() {
         int i = 1;
-        File file = new File("files/json/generated/data" + i + ".json");
+        File file = new File("files/json/data" + i + ".json");
         while (file.exists()) {
             i++;
-            file = new File("files/json/generated/data" + i + ".json");
+            file = new File("files/json/data" + i + ".json");
         }
         try (FileWriter fileWriter = new FileWriter(file)) {
             fileWriter.write(dataList.toJson());

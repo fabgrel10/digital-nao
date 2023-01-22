@@ -16,7 +16,7 @@ public class JsonReader {
         String fileName = scanner.nextLine();
 
         try {
-            Object file = Jsoner.deserialize(new FileReader("files/json/generated/" + fileName + ".json"));
+            Object file = Jsoner.deserialize(new FileReader("files/json/" + fileName + ".json"));
             JsonArray jsonArray = (JsonArray) file;
 
             System.out.println(file);
