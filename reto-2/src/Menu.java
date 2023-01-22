@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 import com.github.cliftonlabs.json_simple.JsonException;
 
+import filehandler.CsvWriter;
 import filehandler.JsonReader;
 import filehandler.JsonWriter;
 
@@ -45,7 +46,8 @@ public class Menu {
                     }
                     break;
                 case 3:
-                    System.out.println("Opción 3");
+                    CsvWriter writer = new CsvWriter();
+                    writer.writeCsvFile();
                     break;
                 case 4:
                     System.out.println("Opción 4");
