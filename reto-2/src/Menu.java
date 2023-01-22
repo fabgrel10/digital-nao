@@ -1,6 +1,8 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 import com.github.cliftonlabs.json_simple.JsonException;
+import com.opencsv.exceptions.CsvValidationException;
 
 import filehandler.CsvWriter;
 import filehandler.JsonReader;
@@ -18,7 +20,7 @@ public class Menu {
         System.out.println("***************************************");
     }
 
-    public void showMenu() {
+    public void showMenu() throws CsvValidationException, IOException {
         while (flag) {
             System.out.println("Ingrese una opción: ");
             System.out.println("");
@@ -41,7 +43,6 @@ public class Menu {
                     try {
                         reader.readJsonFile();
                     } catch (JsonException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                     break;
@@ -50,7 +51,8 @@ public class Menu {
                     writer.writeCsvFile();
                     break;
                 case 4:
-                    System.out.println("Opción 4");
+                    // TODO
+                    System.out.println("Opción no disponible");
                     break;
                 case 5:
                     System.out.println("Hasta luego!");
