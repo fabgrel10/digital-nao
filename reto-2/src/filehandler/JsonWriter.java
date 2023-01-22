@@ -38,46 +38,57 @@ public class JsonWriter {
     }
 
     public void createObject(Scanner sc) {
-        System.out.println("Ingrese la url: ");
-        url = sc.nextLine();
-        System.out.println("Ingrese el scopusId: ");
-        scopusId = sc.nextLine();
-        System.out.println("Ingrese el título: ");
-        title = sc.nextLine();
-        System.out.println("Ingrese el creador: ");
-        creator = sc.nextLine();
-        System.out.println("Ingrese el nombre de la publicación: ");
-        publicationName = sc.nextLine();
-        System.out.println("Ingrese el issn: ");
-        issn = sc.nextLine();
-        System.out.println("Ingrese el eIssn: ");
-        eIssn = sc.nextLine();
-        System.out.println("Ingrese el volumen: ");
-        volume = sc.nextLine();
-        System.out.println("Ingrese la fecha de publicación: dd/MM/yyyy ");
-        coverDate = sc.nextLine();
-        System.out.println("Ingrese la fecha de publicación para mostrar: yyyy ");
-        coverDisplayDate = sc.nextLine();
-        System.out.println("Ingrese el doi: ");
-        doi = sc.nextLine();
-        System.out.println("Ingrese el número de citas: ");
-        citedByCount = sc.nextLine();
-        System.out.println("Ingrese el pubmedId: ");
-        pubmedId = sc.nextLine();
-        System.out.println("Ingrese el tipo de agregación: ");
-        aggregationType = sc.nextLine();
-        System.out.println("Ingrese el subtipo: ");
-        subtype = sc.nextLine();
-        System.out.println("Ingrese la descripción del subtipo: ");
-        subtypeDescription = sc.nextLine();
-        System.out.println("Ingrese el número del artículo: ");
-        articleNumber = sc.nextLine();
-        System.out.println("Ingrese el id de la fuente: ");
-        sourceId = sc.nextLine();
-        System.out.println("Ingrese el openaccess: ");
-        openaccess = sc.nextLine();
-        System.out.println("Ingrese el openaccessFlag: ");
-        openaccessFlag = sc.nextLine();
+        boolean addObject = true;
+        while (addObject) {
+            System.out.println("Ingrese la url: ");
+            url = sc.nextLine();
+            System.out.println("Ingrese el scopusId: ");
+            scopusId = sc.nextLine();
+            System.out.println("Ingrese el título: ");
+            title = sc.nextLine();
+            System.out.println("Ingrese el creador: ");
+            creator = sc.nextLine();
+            System.out.println("Ingrese el nombre de la publicación: ");
+            publicationName = sc.nextLine();
+            System.out.println("Ingrese el issn: ");
+            issn = sc.nextLine();
+            System.out.println("Ingrese el eIssn: ");
+            eIssn = sc.nextLine();
+            System.out.println("Ingrese el volumen: ");
+            volume = sc.nextLine();
+            System.out.println("Ingrese la fecha de publicación: dd/MM/yyyy ");
+            coverDate = sc.nextLine();
+            System.out.println("Ingrese la fecha de publicación para mostrar: yyyy ");
+            coverDisplayDate = sc.nextLine();
+            System.out.println("Ingrese el doi: ");
+            doi = sc.nextLine();
+            System.out.println("Ingrese el número de citas: ");
+            citedByCount = sc.nextLine();
+            System.out.println("Ingrese el pubmedId: ");
+            pubmedId = sc.nextLine();
+            System.out.println("Ingrese el tipo de agregación: ");
+            aggregationType = sc.nextLine();
+            System.out.println("Ingrese el subtipo: ");
+            subtype = sc.nextLine();
+            System.out.println("Ingrese la descripción del subtipo: ");
+            subtypeDescription = sc.nextLine();
+            System.out.println("Ingrese el número del artículo: ");
+            articleNumber = sc.nextLine();
+            System.out.println("Ingrese el id de la fuente: ");
+            sourceId = sc.nextLine();
+            System.out.println("Ingrese el openaccess: ");
+            openaccess = sc.nextLine();
+            System.out.println("Ingrese el openaccessFlag: ");
+            openaccessFlag = sc.nextLine();
+
+            JsonObject data = saveObject();
+            System.out.println("Agregar nuevo registro? (s/n)");
+            String answer = sc.nextLine();
+            if (answer.equalsIgnoreCase("n")) {
+                addObject = false;
+            }
+        }
+
     }
 
     public JsonObject saveObject() {
@@ -108,10 +119,6 @@ public class JsonWriter {
         return data;
     }
 
-    public void addData(JsonObject data) {
-        dataList.add(data);
-    }
-
     public void writeFile() {
         int i = 1;
         File file = new File("files/json/generated/data" + i + ".json");
@@ -122,6 +129,7 @@ public class JsonWriter {
         try (FileWriter fileWriter = new FileWriter(file)) {
             fileWriter.write(dataList.toJson());
             fileWriter.flush();
+            System.out.println("Archivo JSON creado exitosamente:");
         } catch (IOException e) {
             e.printStackTrace();
         }

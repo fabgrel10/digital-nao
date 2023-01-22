@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import com.github.cliftonlabs.json_simple.JsonObject;
-
 import filehandler.JsonWriter;
 
 public class Menu {
@@ -30,13 +28,9 @@ public class Menu {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Opción 1");
                     Scanner sc = new Scanner(System.in);
                     JsonWriter jsonHandler = new JsonWriter(sc);
-                    JsonObject savedJson = jsonHandler.saveObject();
                     jsonHandler.writeFile();
-                    System.out.println("Archivo JSON creado, con el siguiente contenido:");
-                    System.out.println(savedJson.toJson());
                     break;
                 case 2:
                     System.out.println("Opción 2");
